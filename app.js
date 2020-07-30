@@ -13,7 +13,7 @@ if(process.env.ENV === 'Test'){
 }
 
 //const db = mongoose.connect('mongodb://localhost/bookAPI');
-const port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 const Book = require('./models/bookModel');
 const bookRouter = require('./routes/bookRouter')(Book);
 
