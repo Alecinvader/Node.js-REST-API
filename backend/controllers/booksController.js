@@ -1,5 +1,5 @@
 function booksController(Book) {
-  function post(req, res) {
+  function post(req, res) { 
     const book = new Book(req.body);
 
     if(!req.body.title) {
