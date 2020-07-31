@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 process.env.ENV = 'Test';
 
-const app = require('../app.js');
+const app = require('../server.js');
 
 
 const Book = mongoose.model('Book');
