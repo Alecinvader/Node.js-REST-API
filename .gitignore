@@ -2,3 +2,6 @@
 npm-debug.log
 .DS_Store
 /*.env
+node_modules/.bin/nodemon
+node_modules/.bin/nodemon
+node_modules/.bin/rc.ps1
