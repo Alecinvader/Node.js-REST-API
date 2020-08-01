@@ -5,13 +5,15 @@ const cors = require('cors');
 
 const app = express();
 
+require('dotenv').config();
+
 const uri = process.env.ATLAS_URI;
 if(process.env.ENV === 'Test'){
   console.log('This is a test');
   const db = mongoose.connect('mongodb://localhost/bookAPI_Test');
 } else {
   console.log('This is production level')
-  const db = mongoose.connect('mongodb+srv://Alec-Reynolds:Admin-Password@cluster0.tc5tp.mongodb.net/BookAPI?retryWrites=true&w=majority', {useNewUrlParser: true});
+  const db = mongoose.connect(uri, {useNewUrlParser: true});
 }
 
 //const db = mongoose.connect('mongodb://localhost/bookAPI');
