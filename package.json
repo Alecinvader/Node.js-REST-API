@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
@@ -36,7 +36,7 @@
     ],
     "delay": "2500",
     "env": {
-      "NODE_ENV": "development",
+      "NODE_ENV": "production",
       "PORT": 4000
     }
   }
