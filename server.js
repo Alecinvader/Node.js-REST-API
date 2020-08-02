@@ -18,8 +18,8 @@ if(process.env.ENV === 'Test'){
 
   app.use(express.static(path.join(__dirname, 'build')))
 
-  app.get('/*', (request, response) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html')); // relative path
+  app.get('*', (request, response) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); // relative path
   })
 
 
