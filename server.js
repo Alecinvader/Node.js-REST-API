@@ -29,8 +29,8 @@ if(process.env.ENV === 'Test'){
 
 //const db = mongoose.connect('mongodb://localhost/bookAPI');
 let port = process.env.PORT || 4000;
-const Book = require('./backend/models/bookModel');
-const bookRouter = require('./backend/routes/bookRouter')(Book);
+const Book = require('./models/bookModel');
+const bookRouter = require('./routes/bookRouter')(Book);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
