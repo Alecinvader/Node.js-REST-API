@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
 const cors = require('cors');
 
 const app = express();
@@ -14,7 +15,17 @@ if(process.env.ENV === 'Test'){
 } else {
   console.log('This is production level')
   const db = mongoose.connect('mongodb+srv://Alec-Reynolds:Admin-Password@cluster0.tc5tp.mongodb.net/bookAPI?retryWrites=true&w=majority', {useNewUrlParser: true});
+
+  app.use(express.static('build'));
+
+  app.get('*', (request, response) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html')); // relative path
+  })
+
+
 }
+
+
 
 //const db = mongoose.connect('mongodb://localhost/bookAPI');
 let port = process.env.PORT || 4000;
