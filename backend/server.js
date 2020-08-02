@@ -13,7 +13,7 @@ if(process.env.ENV === 'Test'){
   const db = mongoose.connect('mongodb://localhost/bookAPI_Test');
 } else {
   console.log('This is production level')
-  const db = mongoose.connect(uri, {useNewUrlParser: true});
+  const db = mongoose.connect('mongodb+srv://Alec-Reynolds:Admin-Password@cluster0.tc5tp.mongodb.net/bookAPI?retryWrites=true&w=majority', {useNewUrlParser: true});
 }
 
 //const db = mongoose.connect('mongodb://localhost/bookAPI');
