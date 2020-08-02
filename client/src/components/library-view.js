@@ -25,11 +25,12 @@ export default class LibraryView extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://secret-lake-91457.herokuapp.com/api/books')
+    axios.get( 'https://secret-lake-91457.herokuapp.com/api/books/')
       .then(response => {
         this.setState({
           books: response.data
-        })
+        });
+        console.log('request made successfully');
       })
       .catch(err => {
         console.log(err);
@@ -42,14 +43,18 @@ export default class LibraryView extends Component {
 
     this.setState({
       books: this.state.books.filter(element => element._id !== id)
+    });
+
+  
+  }
+
+  bookList() {
+    return this.state.books.map(currentbook => {
+      return <Book book={currentbook} deleteBook={this.deleteBook} key={currentbook._id}/>;
     })
   }
 
-  booksList() {
-    return this.state.books.map(currentbook => {
-      return <Book book = {currentbook} deleteBook = {this.deleteBook} key={currentbook._id}/>;
-    })
-  }
+  
 
 
   render() {
@@ -66,7 +71,7 @@ export default class LibraryView extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.booksList()}
+            {this.bookList()}
           </tbody>
         </table>
       </div>
