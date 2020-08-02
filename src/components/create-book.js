@@ -56,7 +56,7 @@ export default class CreateBook extends Component {
 
     console.log(book);
 
-    axios.post('http://localhost:4000/api/books', book).then(res => console.log(res.data));
+    axios.post('https://secret-lake-91457.herokuapp.com/api/books', book).then(res => console.log(res.data));
 
     window.location = '/';
   }

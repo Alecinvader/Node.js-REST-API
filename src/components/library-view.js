@@ -25,7 +25,7 @@ export default class LibraryView extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/api/books')
+    axios.get('https://secret-lake-91457.herokuapp.com/api/books')
       .then(response => {
         this.setState({
           books: response.data
@@ -37,7 +37,7 @@ export default class LibraryView extends Component {
   }
 
   deleteBook(id) {
-    axios.delete('http://localhost:4000/api/books/' + id)
+    axios.delete('https://secret-lake-91457.herokuapp.com/api/books/' + id)
     .then(response => console.log(response.data));
 
     this.setState({
