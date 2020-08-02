@@ -16,10 +16,10 @@ if(process.env.ENV === 'Test'){
   console.log('This is production level')
   const db = mongoose.connect('mongodb+srv://Alec-Reynolds:Admin-Password@cluster0.tc5tp.mongodb.net/bookAPI?retryWrites=true&w=majority', {useNewUrlParser: true});
 
-  app.use(express.static('frontend/build'));
+  app.use(express.static(path.join(__dirname, '../build')))
 
   app.get('*', (request, response) => {
-    res.sendFile(path.join(__dirname,'frontend', 'build', 'index.html')); // relative path
+    res.sendFile(path.join(__dirname, '../build')); // relative path
   })
 
 
