@@ -1,44 +1,30 @@
 {
-  "name": "api",
+  "name": "mernapp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "engines": {
-    "node": "12.8.1"
-  },
   "scripts": {
-    "start": "cd ./client && npm start",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "lint": "eslint .",
-    "test": "mocha tests/**/*Tests.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+    
+    
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongodb": "^3.5.9",
-    "mongoose": "^5.9.19",
-    "nodemon": "^2.0.4",
+    "axios": "^0.18.1",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "lodash": "^4.17.19",
+    "mongoose": "^5.4.13",
+    "nodemon": "^2.0.4",
+    "prop-types": "^15.7.2"
   },
-  "devDependencies": {
-    "mocha": "^8.0.1",
-    "should": "^13.2.3",
-    "sinon": "^9.0.2",
-    "supertest": "^4.0.2"
-  },
-  "nodemonConfig": {
-    "restartable": "rs",
-    "ignore": [
-      "node_modules/**/node_modules"
-    ],
-    "delay": "2500",
-    "env": {
-      "NODE_ENV": "production",
-      "PORT": 4000
-    }
+  "engines": {
+    "node": "12.8.1"
   }
 }

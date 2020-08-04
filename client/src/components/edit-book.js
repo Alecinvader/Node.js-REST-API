@@ -21,7 +21,7 @@ export default class EditBook extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://secret-lake-91457.herokuapp.com/api/books/'+this.props.match.params.id)
+    axios.get('https://boiling-caverns-49951.herokuapp.com/books/'+this.props.match.params.id)
     .then(response => {
       this.setState({
         author: response.data.author,
@@ -67,7 +67,7 @@ export default class EditBook extends Component {
 
     console.log(book);
 
-    axios.patch('https://secret-lake-91457.herokuapp.com/api/books/'+ this.props.match.params.id, book).then(res => console.log(res.data));
+    axios.patch('https://boiling-caverns-49951.herokuapp.com/books/'+ this.props.match.params.id, book).then(res => console.log(res.data));
 
     window.location = '/';
   }
