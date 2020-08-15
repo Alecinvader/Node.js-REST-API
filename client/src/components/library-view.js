@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-const Book = props => (
+const Book = (props) => (
   <tr>
     <td>{props.book.title}</td>
     <td>{props.book.author}</td>
     <td>{props.book.genre}</td>
     <td>
-      <Link to = {"/edit/" + props.book._id}>edit</Link> | <a href = "#" onClick={() => {props.deleteBook(props.book._id)}}>delete</a>
+      <Link to={"/edit/" + props.book._id}>edit</Link> |{" "}
+      <a
+        href="#"
+        onClick={() => {
+          props.deleteBook(props.book._id);
+        }}
+      >
+        delete
+      </a>
     </td>
   </tr>
-)
+);
 
 export default class LibraryView extends Component {
   constructor(props) {
@@ -21,47 +29,50 @@ export default class LibraryView extends Component {
 
     this.state = {
       books: [],
-    }
+    };
   }
 
   componentDidMount() {
-    axios.get( 'https://boiling-caverns-49951.herokuapp.com/books/')
-      .then(response => {
+    axios
+      .get("https://secret-lake-91457.herokuapp.com/books/")
+      .then((response) => {
         this.setState({
-          books: response.data
+          books: response.data,
         });
-        console.log('request made successfully');
+        console.log("request made successfully");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   deleteBook(id) {
-    axios.delete('https://boiling-caverns-49951.herokuapp.com/books/' + id)
-    .then(response => console.log(response.data));
+    axios
+      .delete("https://secret-lake-91457.herokuapp.com/books/" + id)
+      .then((response) => console.log(response.data));
 
     this.setState({
-      books: this.state.books.filter(element => element._id !== id)
+      books: this.state.books.filter((element) => element._id !== id),
     });
-
-  
   }
 
   bookList() {
-    return this.state.books.map(currentbook => {
-      return <Book book={currentbook} deleteBook={this.deleteBook} key={currentbook._id}/>;
-    })
+    return this.state.books.map((currentbook) => {
+      return (
+        <Book
+          book={currentbook}
+          deleteBook={this.deleteBook}
+          key={currentbook._id}
+        />
+      );
+    });
   }
-
-  
-
 
   render() {
     return (
       <div>
         <h3>Library View</h3>
-        <table className ="table">
+        <table className="table">
           <thead className="thead-light">
             <tr>
               <th>Title</th>
@@ -70,11 +81,9 @@ export default class LibraryView extends Component {
               <th>Read</th>
             </tr>
           </thead>
-          <tbody>
-            {this.bookList()}
-          </tbody>
+          <tbody>{this.bookList()}</tbody>
         </table>
       </div>
-    )
+    );
   }
 }
