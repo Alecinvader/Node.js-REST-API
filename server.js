@@ -8,6 +8,7 @@ const cors = require("cors");
 const Book = require("./models/bookModel");
 const bookRouter = require("./routes/index")(Book);
 const adminRouter = require("./routes/adminRoutes");
+const authRouter = require("./routes/authRoutes");
 
 const app = express();
 let port = process.env.PORT || 4000;
@@ -22,10 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use("/books", bookRouter);
 app.use("/admin", adminRouter);
+app.use("/auth", authRouter);
 
-// app.get('/', (req, res) => {
-//   res.send('Welcome to my Nodemon API!');
-// });
+app.get("/", (req, res) => {
+  res.send("Welcome to my Nodemon API!");
+});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
