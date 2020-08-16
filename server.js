@@ -6,7 +6,8 @@ const cors = require("cors");
 
 // Importing files
 const Book = require("./models/bookModel");
-const routes = require("./routes")(Book);
+const bookRouter = require("./routes/index")(Book);
+const adminRouter = require("./routes/adminRoutes");
 
 const app = express();
 let port = process.env.PORT || 4000;
@@ -19,7 +20,8 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use("/", routes);
+app.use("/books", bookRouter);
+app.use("/admin", adminRouter);
 
 // app.get('/', (req, res) => {
 //   res.send('Welcome to my Nodemon API!');
